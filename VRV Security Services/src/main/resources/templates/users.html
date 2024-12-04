@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List - VRV Security Services Systems</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        /* Background styling */
+        body {
+            background-image: url("https://www.digitalwebavenue.com/layout/frontend/images/hospital-services.jpg");
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
+            z-index: -1;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent */
+            padding: 10px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-brand, .nav-link {
+            color: #fff !important;
+        }
+
+        .nav-link:hover {
+            color: #ffdd59 !important;
+            transition: color 0.3s;
+        }
+
+        /* Hero section */
+        .hero-section {
+            text-align: center;
+            padding: 50px 20px;
+            color: #fff;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        /* Scrollable Table Styling */
+        .table-container {
+            flex: 1; /* Allow table container to grow */
+            margin: 20px auto;
+            width: 90%;
+            max-height: calc(100vh - 200px); /* Dynamic height based on viewport */
+            overflow-y: auto;
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+            border-radius: 12px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+        }
+
+        .table {
+            width: 100%;
+            margin-bottom: 0;
+        }
+
+        .table th, .table td {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .table thead {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .table tbody tr:nth-child(odd) {
+            background-color: #fff;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f1f1f1;
+            transform: scale(1.02);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: #ffdd59;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">VRV Security Services</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/register}">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1>Welcome, <span sec:authentication="principal.fullName"></span>!</h1>
+        <p>Below is the list of users currently registered in the VRV Security Services System.</p>
+    </div>
+
+    <!-- Scrollable Table -->
+    <div class="table-container">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Date of Birth</th>
+                    <th>Gender</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${listUsers}">
+                    <td th:text="${user.id}"></td>
+                    <td th:text="${user.firstName}"></td>
+                    <td th:text="${user.lastName}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.dateOfBirth}"></td>
+                    <td th:text="${user.gender}"></td>
+                    <td th:text="${user.address}"></td>
+                    <td th:text="${user.city}"></td>
+                    <td th:text="${user.state}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 VRV Security Services	 Systems Pvt Ltd. All Rights Reserved.</p>
+        <p>
+            <a href="/privacy-policy">Privacy Policy</a> | 
+            <a href="/terms-of-service">Terms of Service</a>
+        </p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to VRV Security Services</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background: 
+                linear-gradient(135deg, rgba(142, 45, 226, 0.7), rgba(74, 0, 224, 0.7)), /* Gradient with transparency */
+                url('https://www.digitalwebavenue.com/layout/frontend/images/hospital-services.jpg'); /* Replace with your image URL */
+            background-size: cover; 
+            background-position: center; 
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            transition: background 0.5s ease; 
+        }
+
+        
+        .navbar {
+            background-color: rgba(44, 62, 80, 0.8); 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+
+        .nav-link:hover {
+            color: #ffdd59 !important;
+            transition: color 0.3s ease;
+        }
+
+        
+        .hero-section {
+            text-align: center;
+            padding: 80px 20px;
+            color: white;
+            background: rgba(142, 45, 226, 0.7); 
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .hero-section p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            padding: 15px 30px;
+            background-color: #ff9f43;
+            color: white;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #ff6f43;
+        }
+
+        
+        .feature-section {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: rgba(245, 246, 250, 0.9); 
+        }
+
+        .feature-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #4a00e0;
+        }
+
+        .feature-box {
+            margin-bottom: 50px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-box h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .feature-box p {
+            color: #666;
+        }
+
+        
+        .streamlined-management {
+            background-color: #d1e7dd; 
+        }
+
+        .advanced-analytics {
+            background-color: #cfe2ff; 
+        }
+
+        .secure-reliable {
+            background-color: #f8d7da; 
+        }
+
+        .user-friendly {
+            background-color: #fff3cd; 
+        }
+
+        .customizable-solutions {
+            background-color: #e2e3e5; 
+        }
+
+        .support {
+            background-color: #d3d3d3; 
+        }
+
+        .footer {
+            padding: 20px;
+            text-align: center;
+            color: white;
+            background-color: rgba(44, 62, 80, 0.8); 
+            position: relative;
+        }
+
+       
+        .info-card {
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: background 0.5s ease; 
+        }
+
+        .info-card h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .info-card p {
+            color: #666;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section p {
+                font-size: 1.1rem;
+            }
+
+            .cta-button {
+                width: 100%;
+            }
+
+            .feature-section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">WELCOME TO VRV Security Services</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/register}">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login}">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+   
+    <div class="hero-section">
+        <h1>WELCOME TO VRV Security Services</h1>
+        <p>Manage employees effectively with our modern, secure, and easy-to-use system.</p>
+        <a class="cta-button" th:href="@{/register}">Go To Registration</a>
+    </div>
+
+
+    <div class="feature-section">
+        <h2>Key Features</h2>
+        <div class="row">
+            <div class="col-md-4 feature-box streamlined-management">
+                <h3>Streamlined Management</h3>
+                <p>Track employee data, manage schedules, and improve workflows with ease. Our platform simplifies the entire management process, allowing you to focus on what matters most.</p>
+            </div>
+            <div class="col-md-4 feature-box advanced-analytics">
+                <h3>Advanced Analytics</h3>
+                <p>Get in-depth insights into performance and operations. Our analytics tools help you make informed decisions by providing real-time data and reporting.</p>
+            </div>
+            <div class="col-md-4 feature-box secure-reliable">
+                <h3>Secure & Reliable</h3>
+                <p>Data protection and privacy ensured with top-tier security. We use advanced encryption and security protocols to keep your data safe and secure.</p>
+            </div>
+            <div class="col-md-4 feature-box user-friendly">
+                <h3>User-Friendly Interface</h3>
+                <p>Our intuitive interface makes it easy for everyone to navigate and use the system efficiently, reducing the learning curve and increasing productivity.</p>
+            </div>
+            <div class="col-md-4 feature-box customizable-solutions">
+                <h3>Customizable Solutions</h3>
+                <p>Tailor the system to fit your unique business needs with customizable features and modules that allow you to adapt the platform as your organization grows.</p>
+            </div>
+            <div class="col-md-4 feature-box support">
+                <h3>24/7 Support</h3>
+                <p>Receive assistance anytime with our dedicated support team available around the clock to ensure your operations run smoothly.</p>
+            </div>
+        </div>
+    </div>
+
+ 
+    <div class="container">
+        <center><h2>About VRV Security Services</h2></center>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="info-card" style="background-color: #f8f9fa;">
+                    <h3>Company Overview</h3>
+                    <p>Founded in 2010 (14 yrs old)<br>Employee Count: 51-200 (India)<br>Headquarters: Nagpur, Maharashtra, India</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="info-card" style="background-color: #e9ecef;">
+                    <h3>Website & Industry</h3>
+                    <p>Website: <a href="http://mednetlabs.com" target="_blank">mednetlabs.com</a><br>Primary Industry: Software Product<br>Other Industries: Hardware & Networking</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="info-card" style="background-color: #f1f3f5;">
+                    <h3>Mission Statement</h3>
+                    <p>Oakland Systems aims to provide the best experience to all stakeholders in the patient care delivery system, redefining healthcare solutions globally.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+    <div class="footer">
+        <p>&copy; 2024 VRV Security Services Employee Management. All rights reserved.</p>
+    </div>
+
+    <script>
+        function changeBackgroundGradient() {
+            const colors1 = ['#8e2de2', '#4a00e0', '#ff6f43', '#ff9f43', '#2c3e50'];
+            const colors2 = ['#4a00e0', '#8e2de2', '#ff9f43', '#2c3e50', '#ff6f43'];
+            const randomColor1 = colors1[Math.floor(Math.random() * colors1.length)];
+            const randomColor2 = colors2[Math.floor(Math.random() * colors2.length)];
+            document.body.style.background = `linear-gradient(135deg, ${randomColor1}, ${randomColor2}), url('https://example.com/your-background-image.jpg')`; // Maintain the background image
+            document.body.style.backgroundSize = 'cover'; 
+            document.body.style.backgroundPosition = 'center'; 
+        }
+
+    
+        setInterval(changeBackgroundGradient, 5000);
+    </script>
+</body>
+</html>
